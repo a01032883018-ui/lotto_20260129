@@ -1,0 +1,426 @@
+:root{
+  --bg:#ffffff;
+  --bg2:#f6f6f6;
+  --panel: rgba(0,0,0,.03);
+  --panel2: rgba(0,0,0,.05);
+  --border: rgba(0,0,0,.10);
+  --text: rgba(15, 23, 42, .92);
+  --muted: rgba(15, 23, 42, .68);
+  --muted2: rgba(15, 23, 42, .55);
+  --shadow: 0 16px 50px rgba(15,23,42,.12);
+  --ring: 0 0 0 3px rgba(0,0,0,.18);
+  --accent: #111111;
+  --accent2: #000000;
+  --radius: 14px;
+}
+
+[data-theme="light"]{
+  /* 기본이 라이트. (유지용) */
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial;
+  background: linear-gradient(180deg, var(--bg), var(--bg2));
+  color: var(--text);
+}
+
+code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+}
+
+/* NIKE-LIKE LAYOUT */
+.nkTopbar{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,255,255,.92);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.nkTopbarInner{
+  width: min(1160px, 92vw);
+  margin: 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+  padding: 12px 0;
+}
+.nkBrand{display:flex; align-items:center; gap: 12px}
+.nkMark{
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  background: var(--accent);
+  color: rgba(255,255,255,.95);
+  font-weight: 1000;
+}
+.nkBrandText{display:grid; gap: 1px}
+.nkBrandTitle{
+  font-weight: 1000;
+  letter-spacing: .08em;
+  font-size: 14px;
+  color: var(--accent2);
+}
+.nkBrandSub{
+  font-size: 12.5px;
+  color: var(--muted2);
+}
+.nkShell{
+  width: min(1160px, 92vw);
+  margin: 0 auto 52px;
+}
+.nkLayout{
+  display:grid;
+  grid-template-columns: 300px 1fr;
+  gap: 18px;
+  padding-top: 16px;
+}
+@media (max-width: 920px){
+  .nkLayout{grid-template-columns: 1fr}
+  .nkSidebar{position: relative; top: auto}
+}
+.nkSidebar{
+  position: sticky;
+  top: 72px;
+  align-self: start;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.85);
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+.nkSidebarHeader{display:grid; gap: 2px; margin-bottom: 10px}
+.nkSidebarTitle{font-weight: 1000; letter-spacing:-.02em}
+.nkSidebarSub{font-size: 12.5px; color: var(--muted2)}
+.nkSection{
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.nkSectionTitle{
+  font-size: 13px;
+  font-weight: 1000;
+  color: var(--muted);
+  letter-spacing: -.01em;
+  margin-bottom: 10px;
+}
+.nkButtonsCol{display:grid; gap: 10px}
+.nkHint{margin-top: 10px; font-size: 13px; color: var(--muted2)}
+.nkToggle{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted);
+  user-select:none;
+}
+.nkToggle input{width:18px; height:18px; accent-color: var(--accent)}
+.nkHelper{margin-top: 10px}
+.nkHelperLabel{font-size: 12px; color: var(--muted2)}
+.nkHelperValue{
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.nkHelperValue code{
+  background: rgba(0,0,0,.04);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 10px;
+  color: var(--text);
+}
+
+.history{
+  margin:0;
+  padding: 0;
+  list-style: none;
+}
+.nkHistoryGrid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 760px){
+  .nkHistoryGrid{grid-template-columns: 1fr;}
+}
+
+.historyItem{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.9);
+  box-shadow: var(--shadow);
+}
+.historyActions{
+  display:flex;
+  gap: 8px;
+  justify-content:flex-end;
+}
+.historyNumsCol{display:grid; gap:8px}
+.historyLine{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap: 8px;
+}
+.historyLineLabel{
+  width: 22px;
+  text-align:right;
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--muted2);
+  margin-right: 2px;
+}
+/* BUTTONS (NIKE-LIKE: clean, high-contrast) */
+.nkBtn{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.95);
+  color: rgba(0,0,0,.92);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 1000;
+  letter-spacing: -0.01em;
+  cursor:pointer;
+  min-height: 40px;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+}
+.nkBtn:hover{ background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.14) }
+.nkBtn:active{ transform: translateY(1px) }
+.nkBtn:focus{ outline:none; box-shadow: var(--ring) }
+.nkBtn:disabled{ opacity:.45; cursor:not-allowed }
+.nkBtnPrimary{
+  background: var(--accent);
+  color: rgba(255,255,255,.96);
+  border-color: rgba(0,0,0,.22);
+}
+.nkBtnPrimary:hover{ background: rgba(0,0,0,.86) }
+.nkBtnSecondary{
+  background: rgba(255,255,255,.9);
+}
+.nkBtnDanger{
+  background: rgba(0,0,0,.06);
+  border-color: rgba(0,0,0,.18);
+  color: rgba(0,0,0,.88);
+}
+.nkBtnGhost{
+  background: transparent;
+}
+
+/* GAMES LIST */
+.games{
+  display:grid;
+  gap: 10px;
+}
+.gameLine{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  padding: 10px 10px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 10px 24px rgba(15,23,42,.08);
+}
+
+.gameIndex{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display:grid;
+  place-items:center;
+  font-weight: 1000;
+  color: rgba(255,255,255,.96);
+  background: var(--accent);
+  border: 1px solid rgba(0,0,0,.22);
+  flex: 0 0 auto;
+}
+
+.gameBalls{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  align-items:center;
+  flex: 1 1 auto;
+  min-height: 52px;
+}
+.gameSep{
+  color: var(--muted2);
+  font-weight: 1000;
+  user-select:none;
+}
+.bonusTag{
+  font-size: 12px;
+  font-weight: 1000;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(0,0,0,.03);
+  color: rgba(0,0,0,.78);
+  user-select:none;
+}
+
+.ball{
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  font-weight: 1000;
+  font-size: 16px;
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 12px 24px rgba(0,0,0,.22);
+  transition: transform .18s ease, filter .18s ease;
+  user-select:none;
+}
+.ball:hover{transform: translateY(-2px); filter: brightness(1.05)}
+
+.ball[data-band="1"]{ background: linear-gradient(135deg, #f59e0b, #f97316) }
+.ball[data-band="2"]{ background: linear-gradient(135deg, #22c55e, #16a34a) }
+.ball[data-band="3"]{ background: linear-gradient(135deg, #3b82f6, #2563eb) }
+.ball[data-band="4"]{ background: linear-gradient(135deg, #a855f7, #7c3aed) }
+.ball[data-band="5"]{ background: linear-gradient(135deg, #ef4444, #dc2626) }
+
+.ballBonus{
+  border-color: rgba(0,0,0,.22);
+  box-shadow: 0 12px 24px rgba(0,0,0,.10);
+  position: relative;
+}
+.ballBonus::after{
+  content: "B";
+  position:absolute;
+  top: -7px;
+  right: -7px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  font-size: 11px;
+  font-weight: 1000;
+  background: rgba(0,0,0,.88);
+  color: rgba(255,255,255,.95);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  font-weight: 1000;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 10px 18px rgba(0,0,0,.16);
+}
+.pill[data-band="1"]{ background: linear-gradient(135deg, rgba(245,158,11,.95), rgba(249,115,22,.82)) }
+.pill[data-band="2"]{ background: linear-gradient(135deg, rgba(34,197,94,.92), rgba(22,163,74,.72)) }
+.pill[data-band="3"]{ background: linear-gradient(135deg, rgba(59,130,246,.92), rgba(37,99,235,.72)) }
+.pill[data-band="4"]{ background: linear-gradient(135deg, rgba(168,85,247,.92), rgba(124,58,237,.72)) }
+.pill[data-band="5"]{ background: linear-gradient(135deg, rgba(239,68,68,.9), rgba(220,38,38,.7)) }
+.pillBonus{
+  border-color: rgba(0,0,0,.18);
+}
+
+/* HISTORY MINI BUTTONS */
+.miniBtn{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.95);
+  color: rgba(0,0,0,.88);
+  border-radius: 999px;
+  padding: 8px 10px;
+  cursor:pointer;
+  font-weight: 900;
+  transition: background .2s ease, transform .08s ease;
+}
+.miniBtn:hover{ background: rgba(0,0,0,.03) }
+.miniBtn:active{ transform: translateY(1px) }
+.miniBtn:focus{ outline:none; box-shadow: var(--ring) }
+
+.footer{
+  margin-top: 14px;
+  padding: 10px 4px;
+  color: var(--muted2);
+}
+.small{ font-size: 12.5px; color: var(--muted2) }
+
+/* TOAST */
+.toast{
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,.86);
+  color: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.25);
+  opacity: 0;
+  pointer-events:none;
+  transition: opacity .22s ease, transform .22s ease;
+  min-width: 200px;
+  text-align:center;
+}
+.toast.show{
+  opacity:1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* MAIN CONTENT */
+.nkMain{}
+.nkTitleRow{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.nkPageTitle{
+  margin:0;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.nkBadges{display:flex; flex-wrap:wrap; gap: 8px}
+.nkBadge{
+  font-size: 12.5px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.92);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.nkCard{
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.88);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  margin-top: 12px;
+}
+.nkCardHeader{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.nkCardTitle{
+  font-weight: 1000;
+  letter-spacing: -0.02em;
+}
+.nkCardSub{
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--muted2);
+}
